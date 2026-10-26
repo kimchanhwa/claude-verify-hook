@@ -1,5 +1,5 @@
 {
-  "description": "자동 검증 루프: .py 저장 시 문법 검사와 짝 테스트(pytest)를 실행하고, 실패하면 Claude에게 에러를 전달",
+  "description": "자동 검증 루프: .py 저장 시 문법을 검사하고, 문법 오류가 있으면 Claude에게 전달",
   "hooks": {
     "PostToolUse": [
       {

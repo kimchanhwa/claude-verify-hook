@@ -8,8 +8,8 @@
   "plugins": [
     {
       "name": "verify-on-edit",
-      "description": "Claude가 .py 파일을 저장할 때마다 문법 검사와 짝 테스트(pytest)를 자동 실행하고, 실패하면 에러를 돌려보내 Claude가 스스로 고치게 하는 훅",
-      "version": "1.0.0",
+      "description": "Claude가 .py 파일을 저장할 때마다 문법을 자동 검사하고, 문법 오류가 있으면 Claude가 그 부분만 고치게 하는 훅",
+      "version": "2.0.0",
       "source": "./",
       "category": "development"
     }
