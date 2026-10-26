@@ -35,7 +35,30 @@ FAILED test_calc.py::test_average - assert 5.0 == 4
 
 ## 설치
 
-1. `verify-on-edit.ps1`을 `~/.claude/hooks/`에 복사합니다.
+Claude Code에서 실행합니다. (2.1.275 이상)
+
+```
+/plugin install verify-on-edit --marketplace kimchanhwa/claude-verify-hook
+```
+
+이전 버전이라면 두 단계로 설치합니다.
+
+```
+/plugin marketplace add kimchanhwa/claude-verify-hook
+/plugin install verify-on-edit@claude-verify-hook
+```
+
+설치 후 Claude Code를 다시 시작하면 적용됩니다. 끄거나 지우려면 `/plugin` 메뉴를 쓰세요.
+
+### 수동 설치 (플러그인 없이)
+
+1. 스크립트를 내려받습니다. (PowerShell)
+
+```powershell
+New-Item -ItemType Directory -Force "$HOME\.claude\hooks" | Out-Null
+Invoke-WebRequest https://raw.githubusercontent.com/kimchanhwa/claude-verify-hook/main/hooks/verify-on-edit.ps1 -OutFile "$HOME\.claude\hooks\verify-on-edit.ps1" -UseBasicParsing
+```
+
 2. `~/.claude/settings.json`에 등록합니다. 이미 `PostToolUse`가 있으면 배열에 항목만 추가하세요.
 
 ```json
@@ -59,6 +82,8 @@ FAILED test_calc.py::test_average - assert 5.0 == 4
 
 특정 프로젝트에만 쓰려면 스크립트를 `<프로젝트>/.claude/hooks/`에 두고 `<프로젝트>/.claude/settings.json`에 등록합니다. 이때 명령의 경로는 `"$CLAUDE_PROJECT_DIR/.claude/hooks/verify-on-edit.ps1"`로 씁니다.
 
+플러그인과 수동 설치를 함께 쓰면 검사가 두 번 실행되니 하나만 쓰세요.
+
 ## 검사 없이 통과하는 경우
 
 Claude 작업을 막지 않도록, 아래 경우에는 조용히 통과합니다.
@@ -71,7 +96,7 @@ Claude 작업을 막지 않도록, 아래 경우에는 조용히 통과합니다
 
 ## 설정
 
-스크립트 위쪽 변수로 조절합니다.
+스크립트 위쪽 변수로 조절합니다. 플러그인으로 설치한 스크립트는 업데이트할 때 덮어써지므로, 값을 바꿔 쓰려면 수동 설치를 쓰세요.
 
 | 변수 | 기본값 | 설명 |
 |---|---|---|

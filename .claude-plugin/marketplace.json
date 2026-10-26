@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "claude-verify-hook",
+  "description": "Claude Code 자동 검증 루프 훅 마켓플레이스",
+  "owner": {
+    "name": "kimchanhwa"
+  },
+  "plugins": [
+    {
+      "name": "verify-on-edit",
+      "description": "Claude가 .py 파일을 저장할 때마다 문법 검사와 짝 테스트(pytest)를 자동 실행하고, 실패하면 에러를 돌려보내 Claude가 스스로 고치게 하는 훅",
+      "version": "1.0.0",
+      "source": "./",
+      "category": "development"
+    }
+  ]
+}

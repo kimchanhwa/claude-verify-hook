@@ -1,0 +1,17 @@
+{
+  "description": "자동 검증 루프: .py 저장 시 문법 검사와 짝 테스트(pytest)를 실행하고, 실패하면 Claude에게 에러를 전달",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File \"${CLAUDE_PLUGIN_ROOT}/hooks/verify-on-edit.ps1\"",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
